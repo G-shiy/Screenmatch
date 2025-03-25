@@ -5,10 +5,12 @@ import br.com.screenmatch.screenmatch.model.DataSeason;
 import br.com.screenmatch.screenmatch.model.DataSerie;
 import br.com.screenmatch.screenmatch.model.Episode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Filter;
 import java.util.stream.Collectors;
 
 public class MenuService {
@@ -58,6 +60,11 @@ public class MenuService {
 
         episodes.forEach(System.out::println);
 
+        System.out.println("Type from which date the filtering will start. In format (yyyy-MM-dd)");
+        String dateToFilter = sc.nextLine();
+
+        List<Episode> episodeFilterAge = FilterDateService.filterEpisodesAfterDate(episodes, dateToFilter);
+        episodeFilterAge.forEach(System.out::println);
 
     }
 }
